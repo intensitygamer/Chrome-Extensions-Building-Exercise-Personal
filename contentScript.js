@@ -40,10 +40,7 @@
         const addNewBookmarkEventhandler = () => {
             
             const currentTime = youtubePlayer.currentTime;  
-            
-            var date = new Date(0);
-            date.setSeconds(1);
-
+             
             const newBookmark = {
                 time: currentTime,
                 desc: "Bookmark at" + getTime(currentTime),
@@ -52,13 +49,8 @@
             };
 
             console.log(newBookmark);
-            
-            console.log(getTime(currentTime));
-
-            console.log(date.toISOString().substring(11, 0));
-
-
-            chrome.storage.sync.set({
+              
+             chrome.storage.sync.set({
                 
                 [currentVideo]: JSON.stringify([...currentVideoBookMarks, newBookmark].sort((a, b) => a.time - b.time));
 
@@ -68,6 +60,7 @@
         }
         
 
+      
 })();
 
 const getTime = t => {
